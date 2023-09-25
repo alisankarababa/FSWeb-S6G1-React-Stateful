@@ -37,36 +37,25 @@ export default function RuhHalleri() {
   /* ADIM 1 */
 
     const [mood, setMood] = useState(ilkRuhHali);
-//  const [styleColor, setStyleColor] = useState(mood === mutluRuhHali ? "royalblue" : "crimson");
-    const [styleColor, setStyleColor] = useState("crimson");
-
-
 
   const stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: styleColor, /* ADIM 2 */
+    color: (mood === mutluRuhHali ? "royalblue" : "crimson"), /* ADIM 2 */
   };
 	
   const mutluEt = () => {
     /* ADIM 4 */
     setMood(mutluRuhHali);
-    setStyleColor("royalblue");
-    // setStyleColor(mood === mutluRuhHali ? "royalblue" : "crimson");
   };
   const uZ = () => {
     /* ADIM 5 */
     setMood(uzgunRuhHali);
-    setStyleColor("crimson");   
 
-    // setStyleColor(mood === mutluRuhHali ? "royalblue" : "crimson");
   };
   const reset = () => {
     /* ADIM 6 */
     setMood(ilkRuhHali);
-    setStyleColor("crimson");
-
-    // setStyleColor(styleColor = (mood === mutluRuhHali ? "royalblue" : "crimson"));
   };
 
   
