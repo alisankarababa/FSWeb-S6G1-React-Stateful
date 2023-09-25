@@ -11,7 +11,7 @@ Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
 Yorumları takip edin.
 */
 
-import React from 'react';
+import React, { useState } from 'react';
 /* ADIM 0  */
 
 
@@ -30,6 +30,8 @@ export const enIyilerListesi = [
 export default function Programcilar() {
   // İki state dilimine ihtiyacımız olduğundan, state hooku iki kez kullanmamız gerekecek..
   // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
+  const [listBest, setListBest] = useState(enIyilerListesi);
+  const [featured, setFeatured] = useState(null);
 
 	
   const oneCikaninIsmi = () => {
@@ -38,6 +40,12 @@ export default function Programcilar() {
     // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
     // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
 	// bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+
+    stil.color = "gold";
+
+    return listBest.find((programmer) => {
+        return programmer.id === featured
+    }).isim;
   };
 
   const stil = {
@@ -55,9 +63,9 @@ export default function Programcilar() {
           // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
           // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
           " */
-          enIyilerListesi.map(dev =>
+          listBest.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.isim} <button onClick={() => {/* burada dev.id 'yi öne çıkan id'ye atayın */ }}>Kutla</button>
+              {dev.isim} <button onClick={() => {setFeatured(dev.id)/* burada dev.id 'yi öne çıkan id'ye atayın */ }}>Kutla</button>
             </div>
           )
         }
@@ -67,7 +75,7 @@ export default function Programcilar() {
           // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
           // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
           // Sabit kodlanmış false'u doğru değişkenle değiştirin.
-          false
+          featured
             ? `🎉 Hadi ${oneCikaninIsmi()}'ı kutlayalım! 🥳`
             : 'Harika bir programcı seçin'
         }
