@@ -38,7 +38,6 @@ import React, { useState } from 'react'; /* ADIM 0 */
 export default function Input() {
   /* ADIM 1 */
   const [inputDegeri, setInputDegeri] = useState("");
-  const [styleColor, setStyleColor] = useState("crimson");
 	
   const inputuDeğiştir = evt => {
     // When the input changes, its whole value can be found inside the event object.
@@ -47,8 +46,8 @@ export default function Input() {
 	
     /* ADIM 4 */
     setInputDegeri(value);
-    setStyleColor(value.length > 10 ? "crimson" : "royalblue");
   };
+  
   const reset = () => {
     /* ADIM 5 */
     setInputDegeri("");
@@ -57,7 +56,7 @@ export default function Input() {
   const stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: styleColor, /* ADIM 2 */
+    color: inputDegeri.length > 10 ? "crimson" : "royalblue", /* ADIM 2 */
   };
 
   return (
