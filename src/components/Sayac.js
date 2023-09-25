@@ -50,33 +50,24 @@ import React, { useState } from 'react'; /* ADIM 0 buraya*/
 export default function Sayac() {
   /* ADIM 1 buraya*/
   const [sayici, setSayici] = useState(0);
-//   const [styleColor, setStyleColor] = useState((sayici) % 2 ? "crimson" : "royalblue" );
-  const [styleColor, setStyleColor] = useState("royalblue");
-
 
   const stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: styleColor, /* ADIM 2 */
+    color: (sayici) % 2 ? "crimson" : "royalblue", /* ADIM 2 */
   };
 
   const artirici = () => {
     /* ADIM 4 buraya */
     setSayici(sayici + 1);
-    setStyleColor((sayici + 1) % 2 ? "crimson" : "royalblue");
   };
   const azaltici = () => {
     /* ADIM 5 */
     setSayici(sayici - 1);
-    setStyleColor((sayici -1) % 2 ? "crimson" : "royalblue");
   };
   const reset = () => {
     setSayici(0);
-    // setStyleColor((sayici) % 2 ? "crimson" : "royalblue");
-    setStyleColor("royalblue");
-
   };
-  
 
   return (
     <div className='widget-counter container'>
